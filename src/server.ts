@@ -7,7 +7,12 @@ dotenv.config()
 mongoose.connect(process.env.DATABASE_URL);
 
 const connection = mongoose.connection;
-connection.once("open", () => console.log("mongodb connect succeed"));
+connection.once("open", () => console.log("mongodb connect succeed", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+}));
 
 const PORT = process.env.PORT || 5000;
 
