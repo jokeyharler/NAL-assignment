@@ -13,3 +13,10 @@ export const updateEvent = Joi.object({
   startDate: Joi.string(),
   dueDate: Joi.string(),
 });
+
+export const eventQuery = Joi.object({
+  limit: Joi.number(),
+  page: Joi.number(),
+  sortKey: Joi.valid('eventName', 'description', 'startDate', 'dueDate'),
+  sortOrder: Joi.valid('asc', 'desc'),
+});

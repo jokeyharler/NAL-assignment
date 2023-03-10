@@ -7,9 +7,17 @@ export const createEvent = async (payload: createEventDto) => {
   return { status: 200, event }
 }
 
-export const getEvents = async () => {
-  const events = await Event.find();
-  return { status: 200, events };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getEvents = async (query: any) => {
+  const limit: number = query.limit ? query.limit : 5;
+  const page: number = query.page ? query.page : 1;
+  const sortKey: string = query.sortKey ? query.sortKey : 'eventName';
+  const order = query.sortOrder
+
+  const events = await Event.find().limit(limit).skip((page - 1) * limit).sort([[sortKey, order]]);
+  const count = await Event.count();
+  
+  return { status: 200, events, totalPages: Math.ceil(count / limit), page };
 }
 
 export const updateEvent = async (eventId: string, payload: updateEventDto) => {

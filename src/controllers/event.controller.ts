@@ -12,7 +12,7 @@ export const createEvent = async (req: Request, res: Response, next: NextFunctio
 
 export const getEvents = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await eventServices.getEvents();
+    const result = await eventServices.getEvents(req.query);
     res.status(result.status).send(result);
   } catch (error) {
     next(error);
