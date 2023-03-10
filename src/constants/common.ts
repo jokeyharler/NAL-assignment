@@ -15,6 +15,14 @@ export const swaggerOptions = {
 				url: "http://localhost:5000",
 			},
 		],
+		securityDefinitions: {
+			bearerAuth: {
+					type: 'apiKey',
+					name: 'Authorization',
+					scheme: 'bearer',
+					in: 'header',
+			},
+		},
 	},
 	apis: ["src/controllers/*.controller.ts"],
 }; 

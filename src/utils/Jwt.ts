@@ -1,4 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import JWT from 'jsonwebtoken';
+import * as dotenv from 'dotenv';
+
+dotenv.config()
 
 class Jwt {
   secret: string;
@@ -8,7 +12,7 @@ class Jwt {
     this.expiresIn = process.env.JWT_EXPIRATION || '7d';
   }
 
-  issue(payload: string, expires: string) {
+  issue(payload: any, expires?: string) {
     return JWT.sign(payload, this.secret, {
       expiresIn: expires || this.expiresIn,
     });
