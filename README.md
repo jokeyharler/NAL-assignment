@@ -1,7 +1,7 @@
 
 ## Installation
 
-This server requires [Node.js](https://nodejs.org/) v10+ and [Typescript] v4+ to run.
+This server requires [Node.js](https://nodejs.org/) v10+ and [Typescript](https://www.typescriptlang.org/) v4+ to run.
 
 Install the dependencies and devDependencies and start the server.
 
