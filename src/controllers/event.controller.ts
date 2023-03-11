@@ -3,7 +3,6 @@ import { eventServices } from '../services/index';
 
 export const createEvent = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    console.log(req.body)
     const result = await eventServices.createEvent(req.body);
     res.status(result.status).send(result);
   } catch (error) {
