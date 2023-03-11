@@ -11,8 +11,8 @@ export const createEvent = async (payload: createEventDto) => {
 export const getEvents = async (query: any) => {
   const limit: number = query.limit ? query.limit : 5;
   const page: number = query.page ? query.page : 1;
-  const sortKey: string = query.sortKey ? query.sortKey : 'eventName';
-  const order = query.sortOrder
+  const sortKey: string = query.sortKey ? query.sortKey : 'startDate';
+  const order = query.sortOrder ? query.sortOrder : 'desc';
 
   const events = await Event.find().limit(limit).skip((page - 1) * limit).sort([[sortKey, order]]);
   const count = await Event.count();

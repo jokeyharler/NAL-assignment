@@ -12,7 +12,6 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
 
 export const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    console.log(req.headers)
     const result = await authSerivces.login(req.body);
     res.status(result.status).send(result);
   } catch (error) {
@@ -28,6 +27,9 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
  *     BearerAuth:
  *       type: http
  *       scheme: bearer
+ *       name: 'Authorization'
+ *       in: 'header'
+ *       bearerFormat: 'JWT'
  *   schemas:
  *     user:
  *       type: object
@@ -48,7 +50,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
  * /api/v1/auth/register:
  *   post:
  *     security: 
- *        - Bearer: []
+ *        - BearerAuth: []
  *     summary: Create a new user
  *     tags: [auth]
  *     requestBody:
@@ -70,6 +72,8 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
  * @swagger
  * /api/v1/auth/login:
  *   post:
+ *     security: 
+ *        - BearerAuth: []
  *     summary: Login with created user
  *     tags: [auth]
  *     requestBody:
