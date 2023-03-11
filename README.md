@@ -3,6 +3,8 @@
 
 This server requires [Node.js](https://nodejs.org/) v10+ and [Typescript](https://www.typescriptlang.org/) v4+ to run.
 
+Make sure you have installed MongoDB on your local machine
+
 Install the dependencies and devDependencies and start the server.
 
 ```sh
