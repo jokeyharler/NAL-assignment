@@ -3,9 +3,14 @@
 
 This server requires [Node.js](https://nodejs.org/) v10+ and [Typescript](https://www.typescriptlang.org/) v4+ to run.
 
-Make sure you have installed MongoDB on your local machine
+Make sure you have installed these packages and MongoDB on your local machine
+-------------------------------------------------------------------------------------------------------------
+```sh
+yarn global add nodemon typescript
+```
+-------------------------------------------------------------------------------------------------------------
 
-Install the dependencies and devDependencies and start the server.
+Install the dependencies and start the server.
 
 ```sh
 cd NAL-assignment
