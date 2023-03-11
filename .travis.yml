@@ -1,0 +1,10 @@
+language: node_js
+
+node_js:
+  - 16.13.2
+
+before_script:
+  - npm install
+
+script:
+  - npm run test
