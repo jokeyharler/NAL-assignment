@@ -4,6 +4,11 @@ import updateEventDto from '../dtos/update-event.dto';
 
 export const createEvent = async (payload: createEventDto) => {
   const event = await Event.create(payload);
+  
+  if (new Date(payload.dueDate) < new Date(payload.startDate)) {
+    return { status: 400, message: 'the due date must be greater than the start date' }
+  }
+
   return { status: 200, event }
 }
 

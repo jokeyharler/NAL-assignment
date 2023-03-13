@@ -98,6 +98,22 @@ describe('API testing', () => {
       expect(response.status).toBe(200);
       event = response.body.event
     })
+
+    it('It should returns 400 if the due date is before the start date', async () => {
+      const response = await request(app)
+      .post('/api/v1/events').set('Authorization', `Bearer ${accessToken}`)
+      .send(
+        { 
+          eventName: faker.animal.bird(),
+          description: faker.company.name(),
+          startDate: '2022-11-12',
+          dueDate: '2022-11-11'
+        }
+      )
+
+      expect(response.status).toBe(400);
+      expect(response.body.message).toBe('the due date must be greater than the start date')
+    })
   })
 
   describe('PUT /events', () => {
